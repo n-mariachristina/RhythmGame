@@ -15,13 +15,15 @@ public class Conductor extends Actor
      */
     public void act() 
     {
-        
+        changeColor();        
     }
    
     public void changeColor() {
+       if (Greenfoot.isKeyDown("space")) {
         setImage(new GreenfootImage("conductor2.png"));
         Greenfoot.delay(5);
         setImage(new GreenfootImage("conductor.png"));
+       }
     }
     
 }
