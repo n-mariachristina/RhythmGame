@@ -8,18 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Button extends Actor
 {
-    /**
-     * Act - do whatever the Button wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        // Add your action code here.
-    }  
+        
+    // play button for unlocked levels
     
     public Button() {
-        GreenfootImage buttonImg = new GreenfootImage("button.png");
-        buttonImg.scale(buttonImg.getWidth()/4,buttonImg.getHeight()/4);
-        setImage(buttonImg);
+        GreenfootImage startImg = new GreenfootImage("button.png");
+        startImg.scale(startImg.getWidth()/2,startImg.getHeight()/2);
+        setImage(startImg);
     }
 }

@@ -9,7 +9,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Info extends World
 {
 
-    private Button goBack = new Button();
+    private AnyButton goBack = new AnyButton();
+    
+    // acts as button
+    Extra extra = new Extra();
+    
+    // whether to use boings instead of beeps
+    static boolean boing = false;
     
     /**
      * Constructor for objects of class Info.
@@ -17,26 +23,27 @@ public class Info extends World
      */
     public Info()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1000, 560, 1); 
-        
+        super(1000, 560, 1);         
         prepare();
+    }    
+       
+    public void prepare() {
+        
+        addObject(goBack, 100, 318);
+        
+        addObject(extra, 500, 50);
+                
     }
     
     public void act() {
         checkGoBack();
+        checkEasterEgg();
     }
     
-    public void prepare() {
-        
-        addObject(goBack, 500, 500);
-        showText("Go back", 500, 500);
-        
-        showText("HOW TO PLAY", 300, 100);
-        showText("i dont know how to play.", 300, 200);
-        showText("the game hasnt been made yet...", 300, 300);
-        showText("CREDITS", 700, 100);
-        showText("girlbosses", 700, 200);
+    public void checkEasterEgg() {
+        if (Greenfoot.mouseClicked(extra)) {
+            boing = true;
+        }
     }
     
     public void checkGoBack() {
@@ -44,4 +51,5 @@ public class Info extends World
             Greenfoot.setWorld(new TitleScreen());
         }
     }
+    
 }

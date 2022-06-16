@@ -8,11 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class TitleScreen extends World
 {
-    private Button startButton = new Button();
-    private Button moreInfoButton = new Button();
+    
+    private AnyButton startButton = new AnyButton();
+    private AnySmall moreInfoButton = new AnySmall();
     
     private boolean playingGame = false;
     private boolean infoScreen = false;
+    
+    // using boings instead of beeps (easter egg)
+    boolean boing = false;
     
     /**
      * Constructor for objects of class MyWorld.
@@ -22,38 +26,32 @@ public class TitleScreen extends World
     {    
         super(1000, 560, 1); 
         prepare();
-        
-        GreenfootImage img = new GreenfootImage("placeholder.png");
+                
+        GreenfootImage img = new GreenfootImage("RHYTHMOS.png");
         img.scale(img.getWidth()/2, img.getHeight()/2);
-        setBackground(img);
+        setBackground(img);        
+        
     }
     
     public void prepare() {
-        addObject(startButton, 300, 400);
-        addObject(moreInfoButton,700, 400);
-        showButtonOptions();
+        addObject(startButton, 500, 170);
+        addObject(moreInfoButton,900, 40);
     }
     
     public void act() {
-        showButtonOptions();
         checkStartSelection();
-       
         if (playingGame) {
-            Greenfoot.setWorld(new LevelSelect());
+            // false false indicates levels 2 and 3 are locked
+            Greenfoot.setWorld(new LevelSelect(false, false));
         }
         if (infoScreen) {
             Greenfoot.setWorld(new Info());
         }
     }
-    
-    public void showButtonOptions() {
-        showText("START", 300, 400);
-        showText("MORE INFO", 700, 400);
-    }
-    
+   
     public void checkStartSelection() {
         if (Greenfoot.mouseClicked(startButton)) {
-            playingGame = true;
+            playingGame = true;            
         }
         if (Greenfoot.mouseClicked(moreInfoButton)) {
             infoScreen = true;
